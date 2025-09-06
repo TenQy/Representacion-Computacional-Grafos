@@ -1,17 +1,25 @@
 document.addEventListener('DOMContentLoaded', function() {
     const button = document.getElementById('generateGraph');
     button.addEventListener('click', function(){
-        const rows = document.querySelectorAll('tbody tr');
+        const rows = document.querySelectorAll('#inputTable tbody tr');
+        console.log("Total de filas tbody encontradas:", rows.length);
+        console.log("Elementos tbody en la página:", document.querySelectorAll('tbody').length);
         const routes = [];
         const vertices = new Set();
 
         rows.forEach(function(row, index) {
             const inputs = row.querySelectorAll('input');
-            const origen = inputs[0].value.trim();
-            const destino = inputs[1].value.trim();
-            const peso = inputs[2].value.trim();
+            console.log(`Fila ${index}: encontrados ${inputs.length} inputs`);
+            
+            if (inputs.length >= 3) {
+                const origen = inputs[0].value.trim();
+                const destino = inputs[1].value.trim();
+                const peso = inputs[2].value.trim();
+            
+        
+        console.log(`Fila ${index}: ${origen} -> ${destino}, peso: ${peso}`);
 
-            if(origin && destino && peso) {
+            if(origen && destino && peso) {
                 routes.push({
                     from: origen,
                     to: destino,
@@ -20,6 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
                 vertices.add(origen);
                 vertices.add(destino);
+            }
             }
         });
 
@@ -77,7 +86,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             htmlTable += '</table>';
 
-            document.getElementById('adjacencyMatrix').innerHTML = htmlTable;
+            const resultsDiv = document.getElementById('adjacencyMatrix');
+            resultsDiv.innerHTML = '';
+            resultsDiv.innerHTML = htmlTable;
         }
 
         displayMatrix(matrix, vertexList);
