@@ -92,5 +92,36 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         displayMatrix(matrix, vertexList);
+        displayGraph(routes, vertexList, isDirected);
+
+        function displayGraph(routes, vertices, isDirected) {
+            const nodes = vertices.map(vertex => ({
+                id: vertex,
+                label: vertex,
+                color: '#4ECDC4'
+            }));
+
+            const edges = routes.map(route => ({
+                from: route.from,
+                to: route.to,
+                label: route.weight.toString(),
+                arrows: isDirected ? 'to' : '',
+                color: '#848484'
+            }));
+
+            console.log("Nodos", nodes);
+            console.log("aristas", edges);
+
+            const container = document.getElementById('graphContainer');
+            const data = { nodes: nodes, edges: edges};
+            const options = {
+                pyshics: { enabled: true },
+                edges: {
+                    font: { size: 14 }
+                }
+            };
+
+            new vis.Network(container, data, options);
+        }
     });
 });
