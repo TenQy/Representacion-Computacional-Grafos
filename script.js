@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const button = document.getElementById('generateGraph');
     button.addEventListener('click', function(){
+        document.getElementById('routeResult').innerHTML = "";
         const rows = document.querySelectorAll('#inputTable tbody tr');
         console.log("Total de filas tbody encontradas:", rows.length);
         console.log("Elementos tbody en la página:", document.querySelectorAll('tbody').length);
