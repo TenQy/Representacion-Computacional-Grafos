@@ -6,15 +6,18 @@
         <title>Graph Generator</title>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="styles.css">
     </head>
 
     <body>
         <h1>Generador de Grafos</h1>
 
         <!--Sección de configuracion-->
-        <input type="checkbox" id="directed">
-        <label for="directed">Grafo dirigido</label>
-
+        <div class="config-section">
+            <input type="checkbox" id="directed">
+            <label for="directed">Grafo dirigido</label>
+        </div>
+        
         <!--Contenedor principal con dos columnas-->
         <div class="main-container">
             <!--Tabla de rutas-->
@@ -100,8 +103,9 @@
         <!--Sección de resultados-->
         <div id="results">
             <h2>Resultados</h2>
-            <div id="graphContainer" style="height: 400px; border: 1px solid #ccc;"></div>
-            <div id="adjacencyMatrix">
+            <div class="results-container">
+                <div id="graphContainer" style="height: 400px; border: 1px solid #ccc;"></div>
+                <div id="adjacencyMatrix"></div>
             </div>
         </div>
 

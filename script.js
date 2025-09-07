@@ -138,7 +138,19 @@ document.addEventListener('DOMContentLoaded', function() {
             const nodes = vertices.map(vertex => ({
                 id: vertex,
                 label: vertex,
-                color: '#97C2FC'
+                color: {
+                    background: '#c1b0a3',
+                    border: '#80766d', 
+                    highlight: {
+                    background: '#aa9c8e',
+                    border: '#544b45'
+                    }   
+                },
+                font: {
+                    color: '#1e293b',       
+                    size: 16,
+                    face: 'Cambria'         
+                }
             }));
 
             const edges = routes.map(route => ({
@@ -146,7 +158,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 to: route.to,
                 label: route.weight.toString(),
                 arrows: isDirected ? 'to' : '',
-                color: '#848484'
+                color: '#544b45',
+                font: {
+                    color: '#1e293b',
+                    size: 12
+                }
             }));
 
             console.log("Nodos", nodes);
@@ -231,7 +247,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const path = reconstructPath(result.previous, vertexList, startIndex, endIndex);
             const distance = result.distances[endIndex];
 
-            document.getElementById('routeResult').innerHTML = `Ruta más corta ${path.join(' → ')} <br>Distancia total: ${distance}`;
+            document.getElementById('routeResult').innerHTML = `Ruta más corta ${path.join(' → ')} <br>Distancia total: ${distance}km`;
         }
     })
 });
